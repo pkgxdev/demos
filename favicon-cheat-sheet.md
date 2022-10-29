@@ -20,7 +20,7 @@ and stick it at the root of your webserver:
 
 ```sh
 for size in 16 32 48; do
-  convert $0 -resize ${size}x${size} favicon-$size.png
+  convert $1 -resize ${size}x${size} favicon-$size.png
   optipng -o7 favicon-$size.png
 done
 ```
@@ -52,7 +52,7 @@ many cases people recommend *against* it:
 ## Modern Sizes
 
 ```sh
-convert $0 -resize 192x192 apple-touch-icon.png
+convert $1 -resize 192x192 apple-touch-icon.png
 optipng -o7 apple-touch-icon.png
 ```
 
@@ -71,7 +71,7 @@ This README can be executed with tea.xyz.
 
 ```sh
 sh <(curl tea.xyz) \
-  https://github.com/teaxyz/demos/favicon-cheat-sheet.md
+  https://github.com/teaxyz/demos/favicon-cheat-sheet.md \
   input.png
 ```
 
