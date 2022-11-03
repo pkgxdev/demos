@@ -71,7 +71,7 @@ This README can be executed with tea.xyz.
 
 ```sh
 sh <(curl tea.xyz) \
-  https://github.com/teaxyz/demos/favicon-cheat-sheet.md \
+  https://github.com/teaxyz/demos/blob/main/favicon-cheat-sheet.md \
   input.png
 ```
 
