@@ -8,5 +8,14 @@
 ```sh
 # launch a web-server for `$PWD` in your browser (with _file_watching_)
 
-sh <(curl tea.xyz) -X npx --yes browser-sync start --server
+$ sh <(curl tea.xyz) -X npx --yes browser-sync start --server
+```
+
+
+# Hello Universe
+
+The `tea` “Hello World”.
+
+```sh
+$ tea https://github.com/teaxyz/demos/blob/main/hello-universe.sh
 ```
