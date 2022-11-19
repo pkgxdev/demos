@@ -45,6 +45,10 @@ tea hello.py
 echo 'puts "Ruby: Hello World!\\n"' >hello.rb
 tea hello.rb
 
+# lua.org
+echo 'print("Lua: Hello, World!")' >hello.lua
+tea hello.lua
+
 echo '\n*** Compilers ***\n'
 
 # tea.xyz/gx/cc
