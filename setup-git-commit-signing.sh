@@ -44,7 +44,7 @@ tea +crates.io/bpb which -s bpb
 if ! test -f ~/.bpb_keys.toml; then
   #TODO probably we should ask `git` first
 
-  tea +charm.sh/gum format "k first up, we’ll configure your GPG key"
+  tea +charm.sh/gum gum format "k first up, we’ll configure your GPG key"
 
   user=$(tea +charm.sh/gum input "what’s your name?")
   email=$(tea +charm.sh/gum input "what’s your email?")
