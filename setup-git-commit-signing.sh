@@ -1,5 +1,14 @@
 #!/bin/bash
 
+_="
+---
+args:
+  - bash
+dependencies:
+  gnu.org/bash: '*'
+---
+"
+
 set -e
 
 if ! which -s tea; then
