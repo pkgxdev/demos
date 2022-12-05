@@ -67,6 +67,20 @@ else
   middle="\`bpb\` was already configured with a GPG key"
 fi
 
+
+if tea +charm.sh/gum gum confirm -f "shall we add \`bpb\` to \`your github account\`?"; then
+  tea +charm.sh/gum gum format "first, we need to refresh your github with \`write:gpg_key\` scope."
+  # authenticate with gh on web with https and extra permission to write gpg_key
+  tea +github.com/cli/cli gh auth login -h github.com -p https -s write:gpg_key -w
+  # pipe bpb public key to gh
+  tea_bpb print | tea +github.com/cli/cli gh gpg-key add -
+else
+  tea +charm.sh/gum gum format --<<EOMD
+    k, just add your gpg key to your github account by yourself: 
+    > https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account
+EOMD
+fi
+
 tea +charm.sh/gum gum format <<EOMD
 # done!
 $middle
@@ -76,7 +90,6 @@ check out the \`bpb\` README for my information about \`bpb\`
 
 # help improve this script!
 * allow it to port an existing GnuGPG key over
-* using \`gh\` to automate adding your GPG key to GitHub
 * support for other coding hubs
 EOMD
 
