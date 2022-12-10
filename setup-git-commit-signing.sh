@@ -72,9 +72,9 @@ fi
 if tea +charm.sh/gum gum confirm -f "shall we add \`bpb\` to \`your github account\`?"; then
 	tea +charm.sh/gum gum format "first, we need to add the \`write:gpg_key\` scope to your \`gh\` authentication"
 	# authenticate with gh on web with https and extra permission to write gpg_key
-	tea +github.com/cli/cli gh auth login -h github.com -p https -s write:gpg_key -w
+	tea +cli.github.com gh auth login -h github.com -p https -s write:gpg_key -w
 	# pipe bpb public key to gh
-	bpb print | tea +github.com/cli/cli gh gpg-key add -
+	bpb print | tea +cli.github.com gh gpg-key add -
 else
 	tea +charm.sh/gum gum format --<<-EOMD
 		k, just add your gpg key to your github account by yourself:
