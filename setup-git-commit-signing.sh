@@ -58,6 +58,7 @@ if ! test -f /usr/local/bin/bpb; then
 fi
 
 git config --global gpg.program bpb
+git config --global commit.gpgsign true
 
 if (($GENERATED_KEY)); then
 	middle=<<-EOMD
