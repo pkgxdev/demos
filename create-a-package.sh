@@ -14,7 +14,7 @@ if ! which -s git; then
 fi
 
 
-tea +charm.sh/gum gum format --<<EOMD
+gum format --<<EOMD
 # bootstrap the requirements for building a package
 
 ## what to expect from this script
@@ -28,28 +28,31 @@ EOMD
 
 tea +charm.sh/gum gum confirm "shall we continue?"
 
-tea +github.com/cli/cli which -s gh
+tea +cli.github.com which -s gh
 
-tea +charm.sh/gum gum format "k first up, we’ll configure your project root dir"
+# import env so we don’t need to use `tea` to use `gum` or `gh`
+source <(tea --dump +charm.sh/gum +cli.github.com)
+
+gum format "k first up, we’ll configure your project root dir"
 
 # FIXME: escape properly if dir already exists
-projectpath=$(tea +charm.sh/gum gum input --prompt "where do you want to install it? " --value="$HOME/")
+projectpath=$(gum input --prompt "where do you want to install it? " --value="$HOME/")
 
 mkdir $projectpath/pkgdev
 cd $projectpath/pkgdev
 
-tea +charm.sh/gum gum format "next, we’ll clone the required repositories: \`cli\`, \`pantry.core\`, and fork of \`pantry.extra\`."
-tea +charm.sh/gum gum confirm "shall we continue?"
+gum format "next, we’ll clone the required repositories: \`cli\`, \`pantry.core\`, and fork of \`pantry.extra\`."
+gum confirm "shall we continue?"
 
 
-tea +github.com/cli/cli gh repo clone teaxyz/cli
-tea +github.com/cli/cli gh repo clone teaxyz/pantry.core
-tea +github.com/cli/cli gh repo fork teaxyz/pantry.extra --clone=true
+gh repo clone teaxyz/cli
+gh repo clone teaxyz/pantry.core
+gh repo fork teaxyz/pantry.extra --clone=true
 
 
-tea +charm.sh/gum gum format "finally, we’ll setup your package directory with a minimal \`package.yml\` to get started"
+gum format "finally, we’ll setup your package directory with a minimal \`package.yml\` to get started"
 
-packagename=$(tea +charm.sh/gum gum input --prompt "what is the name of your package? ")
+packagename=$(gum input --prompt "what is the name of your package? ")
 
 cd pantry.extra
 tea +git-scm.org git checkout -b $packagename
@@ -60,7 +63,7 @@ mkdir pantry.extra/projects/$packagename
 # minimal package.yml structure
 tea +gnu.org/wget wget -O pantry.extra/projects/$packagename/package.yml https://gist.githubusercontent.com/mfts/b1fb45cb7df9e3691d9c6fd65cf790c3/raw/e86e04c878eeae06ea0eaf5afebf92378d49c266/package.yml
 
-tea +charm.sh/gum gum format <<EOMD
+gum format <<EOMD
 # done!
 You are ready to start packaging $packagename
 
