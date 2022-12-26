@@ -13,7 +13,6 @@ if ! which -s git; then
   exit 1
 fi
 
-
 tea +charm.sh/gum gum format --<<EOMD
 # bootstrap the requirements for building a package
 
@@ -27,8 +26,6 @@ tea +charm.sh/gum gum format --<<EOMD
 EOMD
 
 tea +charm.sh/gum gum confirm "shall we continue?"
-
-tea +cli.github.com which -s gh
 
 # import env so we don’t need to use `tea` to use `gum` or `gh`
 source <(tea --dump +charm.sh/gum +cli.github.com)
