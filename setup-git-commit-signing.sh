@@ -70,7 +70,7 @@ else
 	middle="\`bpb\` was already configured with a GPG key before we were invoked"
 fi
 
-if tea +charm.sh/gum gum confirm -f "shall we add \`bpb\` to \`your github account\`?"; then
+if tea +charm.sh/gum gum confirm "shall we add \`bpb\` to \`your github account\`?"; then
 	tea +charm.sh/gum gum format "first, we need to add the \`write:gpg_key\` scope to your \`gh\` authentication"
 	# authenticate with gh on web with https and extra permission to write gpg_key
 	tea +cli.github.com gh auth login -h github.com -p https -s write:gpg_key -w
