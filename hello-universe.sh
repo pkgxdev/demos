@@ -2,13 +2,6 @@
 
 # shellcheck disable=SC2028
 
-_="
----
-args:
-  - sh
----
-"
-
 wd=$(mktemp -d)
 
 cd "$wd" || exit
